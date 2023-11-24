@@ -20,7 +20,12 @@ router.get('/all', (req, res) => {
 
 
 router.post('/create', (req, res) => {
-    return res.json('Create')
+    MOCK_DATA.push({
+        fname: 'test them moi',
+        uname: 'test',
+        gender: 'chua xac dinh'
+    })
+    return res.json(MOCK_DATA)
 })
 
 module.exports = router;
