@@ -1,9 +1,9 @@
 const express = require('express')
 const router = express.Router();
 const {getAllUsers, getUsersBy, createAnUser, createUsers} = require('../controllers/user.controller')
-
+const {requireAPIKeyByParams} = require('./../middlewares/apiKey.mdw')
 // CRUD
-router.get('/all', getAllUsers)
+router.get('/all/:apiKey', requireAPIKeyByParams, getAllUsers)
 
 router.post('/search', getUsersBy)
 

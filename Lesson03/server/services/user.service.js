@@ -3,7 +3,6 @@ const userData = require('./../utils/mock/user.mock')
 const findUsersBy = (params={}) => {
     const {filters} = params;
     let findUsers = userData ? userData : [];
-    console.log(findUsers)
     if (filters) {
         const {uname, fname, gender} = filters;
         if (uname) {
