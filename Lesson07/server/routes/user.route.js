@@ -6,7 +6,7 @@ const authMdw = require('./../middlewares/auth.mdw');
 
 // CRUD
 router.use(authMdw)
-router.get('/all/:apiKey', requireAPIKeyByParams, getAllUsers)
+router.get('/all', getAllUsers)
 
 router.post('/search', getUsersBy)
 
