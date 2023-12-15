@@ -31,9 +31,7 @@ const insertUser = async (params={}) => {
 
 const updateUserBy = async (params, filters) => {
     try {
-
       await User.updateOne(filters, params); // db đã được update nhưng trong code đang chạy thì chưa cập nhật
-
     } catch (error) {
         console.log(error);
         throw error;

@@ -1,9 +1,23 @@
-const {findUsersBy, insertUser} = require('../services/user.service');
-const getAllUsers = (req, res) => {
-    const result = findUsersBy();
+const {findUsersBy, insertUser, countUsers} = require('../services/user.service');
+const getAllUsers = async (req, res) => {
+    const {query} = req;
+    const page = query.page || 1;
+    const limit = query.limit || 10;
+    const skip = (page - 1) * limit;
+
+    const result = await findUsersBy({filters: {}, pagination: {limit, skip}});
+
+    const total = await countUsers();
+
     return res.json({
         msg: 'success',
-        data: result
+        data: result,
+        pagination: {
+            page,
+            limit,
+            totalItems: total,
+            totalPage: Math.ceil(total / limit)
+        }
     });
 }
 
