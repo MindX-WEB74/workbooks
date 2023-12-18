@@ -50,4 +50,10 @@ const imageUploadService = multer({
   },
 });
 
+
+/**
+ * item => image 
+ * 
+ * 
+ */
 module.exports = imageUploadService;

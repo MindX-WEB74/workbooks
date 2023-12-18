@@ -39,7 +39,12 @@ const insertUser = async (params={}) => {
         throw error;
     }
 }
-
+/**
+ * Cập nhật thông tin user bởi filter
+ * \
+ * @param {Object} params 
+ * @param {Object} filters
+ */
 const updateUserBy = async (params, filters) => {
     try {
       await User.updateOne(filters, params); // db đã được update nhưng trong code đang chạy thì chưa cập nhật
