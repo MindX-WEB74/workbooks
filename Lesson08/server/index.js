@@ -4,12 +4,29 @@ const app = express()
 const PORT = process.env.PORT;
 const cors = require('cors')
 const router = require('./routes/index')
-app.use(cors())
+const whitelist = [
+  'https://lesson09.onrender.com',
+  'http://localhost:3000',
+];
+
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (process.env.NODE_ENV === 'development') {
+      return callback(null, true);
+    }
+
+    if (whitelist.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  methods: 'PUT,PATCH,GET,DELETE,UPDATE',
+};
+app.use(cors(corsOptions))
 const {connectDB} = require('./configs/db.cfg')
-console.log('hi')
-connectDB().then(() => {
-  
-});
+
+connectDB().then(() => {});
 
 app.use(express.json())
 
