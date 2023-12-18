@@ -4,6 +4,8 @@ const app = express()
 const PORT = process.env.PORT;
 const cors = require('cors')
 const router = require('./routes/index')
+const {connectDB} = require('./configs/db.cfg')
+
 const whitelist = [
   'https://lesson09.onrender.com',
   'http://localhost:3000',
@@ -24,13 +26,11 @@ const corsOptions = {
   },
   methods: 'PUT,PATCH,GET,DELETE,UPDATE',
 };
-app.use(cors(corsOptions))
-const {connectDB} = require('./configs/db.cfg')
 
 connectDB().then(() => {});
 
 app.use(express.json())
-
+app.use(cors(corsOptions));
 app.use('/', router)
 
 // vivt3 -> hash
