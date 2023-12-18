@@ -9,6 +9,6 @@ const {requireAPIKey} = require('./../middlewares/apiKey.mdw')
 router.use(loggerMdw)
 router.use('/auth', authRouter)
 router.use('/user', userRouter)
-router.use('/post', requireAPIKey, postRouter)
+router.use('/post', postRouter)
 
 module.exports = router

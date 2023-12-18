@@ -6,7 +6,7 @@ const authMdw = require('./../middlewares/auth.mdw');
 const {imageUploadLocal} = require('./../middlewares/uploadImageToLocal.mdw');
 
 // CRUD
-router.use(authMdw)
+// router.use(authMdw)
 router.get('/all', getAllUsers)
 
 router.post('/search', getUsersBy)
