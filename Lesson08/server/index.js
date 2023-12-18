@@ -11,6 +11,7 @@ const whitelist = [
 
 const corsOptions = {
   origin: function (origin, callback) {
+    console.log(origin)
     if (process.env.NODE_ENV === 'development') {
       return callback(null, true);
     }
