@@ -30,7 +30,7 @@ const corsOptions = {
 connectDB().then(() => {});
 
 app.use(express.json())
-app.use(cors(corsOptions));
+app.use(cors());
 app.use('/', router)
 
 // vivt3 -> hash
